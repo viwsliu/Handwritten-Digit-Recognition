@@ -1,6 +1,11 @@
 # Handwritten-Digit-Recognition
 Uses a neural network (via pytorch) to recognize handwritten digits
 
+## Description:
+
+
+
+
 ## Setup:
 Create a py environment:
 ```bash
@@ -22,3 +27,4 @@ To stop the python environment:
 ```bash
 deactivate
 ```
+
