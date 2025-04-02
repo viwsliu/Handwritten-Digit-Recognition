@@ -3,5 +3,4 @@
 Images must follow this criteria:
 - Grayscale or RGB
 - Formatted .png / .jpg
-
-Images can be named anything
+- Images can be named anything
