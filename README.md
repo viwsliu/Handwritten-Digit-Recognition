@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 Run:
 ```bash
-python ./example.py
+python ./main.py
 ```
 
 To stop the python environment:
