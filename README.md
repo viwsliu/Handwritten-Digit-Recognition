@@ -2,9 +2,7 @@
 Uses a neural network (via pytorch) to recognize handwritten digits
 
 ## Description:
-
-
-
+This project uses a Convolutional Neural Network (CNN) built with PyTorch to recognize handwritten digits from the MNIST dataset. The model is trained on 60,000 labeled digit images and tested on 10,000 unseen examples. After training, it can also predict digits from custom images provided by the user.
 
 ## Setup:
 Create a py environment:
