@@ -1,12 +1,14 @@
-import struct
-import numpy as np
-import matplotlib.pyplot as plt
+import struct # helps read binary files
+import numpy as np # for reshaping and processing pixel data
+import matplotlib.pyplot as plt # used to display and save the images
 
 def read_images(path):
     with open(path, 'rb') as f:
         magic, num_images, rows, cols = struct.unpack(">IIII", f.read(16))
+        # magic: file identifier
+        # row x col = (28×28)
         images = np.frombuffer(f.read(), dtype=np.uint8)
-        images = images.reshape(num_images, rows, cols)
+        images = images.reshape(num_images, rows, cols) #turns into 3d array
     return images
 
 def read_labels(path):
