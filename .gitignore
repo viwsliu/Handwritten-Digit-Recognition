@@ -14,3 +14,5 @@ data/
 env/
 venv/
 .venv/
+*.png
+*.jpg
