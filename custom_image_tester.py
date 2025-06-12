@@ -1,31 +1,23 @@
 import torch
-import torchvision.transforms as transforms
-from PIL import Image
+import torchvision.transforms as transforms #provides common datasets, model architectures, and image transformations specifically for computer vision tasks
+from PIL import Image # Python Imaging Library (PIL)
 import os
 from model import DigitNet  # import your model definition
 
-print(torch.cuda.is_available()) #check if Pytorch detects CUDA
-
+# print(torch.cuda.is_available()) #check if Pytorch detects CUDA, uses cpu otherwise
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-model = DigitNet().to(device)
-model.load_state_dict(torch.load("model.pth", map_location=device))
-model.eval()
-
-# transform = transforms.Compose([
-#     transforms.Grayscale(),             # ensure 1 channel
-#     transforms.Resize((28, 28)),        # resize to MNIST format
-#     transforms.ToTensor(),              # convert to [0,1]
-#     transforms.Normalize((0.1307,), (0.3081,))  # same normalization as MNIST
-# ])
-
+model = DigitNet().to(device) # instantiates CNN model
+model.load_state_dict(torch.load("model.pth", map_location=device)) # loads pretrained weights from model.pth
+model.eval() # switches model to inference mode (prediction only)
+ 
 transform = transforms.Compose([
-    transforms.Grayscale(),
-    transforms.Resize((28, 28)),
-    transforms.ToTensor(),
+    transforms.Grayscale(), # converts image to grayscale
+    transforms.Resize((28, 28)), # resize to MNIST format
+    transforms.ToTensor(), # convert to tensor float values [0,1]
     transforms.Normalize((0.5,), (0.5,))
+    # transforms.Normalize((0.1307,), (0.3081,))  # same normalization as MNIST
 ])
-
 
 image_folder = "./uploaded_images/"
 
@@ -38,3 +30,8 @@ with torch.no_grad():
             output = model(image)
             pred = output.argmax(dim=1).item()
             print(f"{file}: Predicted → {pred}")
+
+#loops thru each image in folder,
+# load + preprocess image
+# add batch dimensions
+# passes it through the model and prints the predicted

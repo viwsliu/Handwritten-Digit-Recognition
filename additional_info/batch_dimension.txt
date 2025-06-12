@@ -1,0 +1,16 @@
+Batch Dimensions in PyTorch:
+
+- PyTorch expects image input in the shape: [Batch Size, Channels, Height, Width]
+- Batch Size: number of samples processed at once
+- Channels: 1 for grayscale, 3 for RGB
+- Height and Width: pixel dimensions of the image
+
+Examples:
+- A single 28x28 grayscale image tensor is shaped [1, 28, 28]
+- After adding batch dimension: [1, 1, 28, 28]
+
+Adding a batch dimension:
+- Use .unsqueeze(0) to add a batch dimension at the front
+
+Why it's needed:
+- Neural networks are designed to process batches, even if the batch contains only 1 item
