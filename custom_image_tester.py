@@ -4,20 +4,30 @@ from PIL import Image
 import os
 from model import DigitNet  # import your model definition
 
+print(torch.cuda.is_available()) #check if Pytorch detects CUDA
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model = DigitNet().to(device)
 model.load_state_dict(torch.load("model.pth", map_location=device))
 model.eval()
 
+# transform = transforms.Compose([
+#     transforms.Grayscale(),             # ensure 1 channel
+#     transforms.Resize((28, 28)),        # resize to MNIST format
+#     transforms.ToTensor(),              # convert to [0,1]
+#     transforms.Normalize((0.1307,), (0.3081,))  # same normalization as MNIST
+# ])
+
 transform = transforms.Compose([
-    transforms.Grayscale(),             # ensure 1 channel
-    transforms.Resize((28, 28)),        # resize to MNIST format
-    transforms.ToTensor(),              # convert to [0,1]
-    transforms.Normalize((0.1307,), (0.3081,))  # same normalization as MNIST
+    transforms.Grayscale(),
+    transforms.Resize((28, 28)),
+    transforms.ToTensor(),
+    transforms.Normalize((0.5,), (0.5,))
 ])
 
-image_folder = "./my_digits"
+
+image_folder = "./uploaded_images/"
 
 with torch.no_grad():
     for file in os.listdir(image_folder):
