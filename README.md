@@ -27,3 +27,13 @@ To stop the python environment:
 deactivate
 ```
 
+## Additional Info
+A few topics I was able to learn about when working on this project:
+Convolutional layers
+Pooling layers
+Forward Pass
+Loss Function
+Backpropagation
+Training Loop (main.py)
+Inference (Evaluation)
+Model Persistence
