@@ -16,3 +16,4 @@ venv/
 .venv/
 *.png
 *.jpg
+*.csv
